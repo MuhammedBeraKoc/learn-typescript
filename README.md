@@ -1,2 +1,2 @@
 # learn-typescript
-A comprehensive guide embedded in the TypeScript as comments
+A comprehensive guide for complete Typescript written in Typescript files.
