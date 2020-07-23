@@ -5,7 +5,8 @@
     ],
     "jsRules": {},
     "rules": {
-        "no-duplicate-variable": true
+        "no-duplicate-variable": true,
+        "no-console": false
     },
     "rulesDirectory": []
 }
