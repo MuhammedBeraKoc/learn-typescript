@@ -1,4 +1,4 @@
-// ts-lint:disable
+/* tslint:disable */
 // Interfaces are roughly the shape of the data
 // Let us start with an easy example
 // Script object may have more than script property
