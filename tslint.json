@@ -6,7 +6,8 @@
     "jsRules": {},
     "rules": {
         "no-duplicate-variable": true,
-        "no-console": false
+        "no-console": false,
+        "max-classes-per-file": 100
     },
     "rulesDirectory": []
 }
