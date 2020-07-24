@@ -7,7 +7,8 @@
     "rules": {
         "no-duplicate-variable": true,
         "no-console": false,
-        "max-classes-per-file": 100
+        "max-classes-per-file": false,
+        "only-arrow-functions": false
     },
     "rulesDirectory": []
 }
