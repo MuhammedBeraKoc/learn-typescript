@@ -1,4 +1,5 @@
 "use strict";
+// tslint:disable
 // Enums are basically values disguised in constant
 // names for making code readable
 var KeyboardSignal;
@@ -113,3 +114,5 @@ var a = Enum.A;
 var nameOfA = Enum[a];
 console.log({ nameOfA: nameOfA });
 var myAlert = 0 /* Mild */;
+// Ambient enums
+// They used to describe the shape of a predifined enum
