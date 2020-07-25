@@ -1,3 +1,4 @@
+// tslint:disable
 // Enums are basically values disguised in constant
 // names for making code readable
 enum KeyboardSignal {
