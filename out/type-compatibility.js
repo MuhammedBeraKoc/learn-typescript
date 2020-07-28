@@ -79,3 +79,15 @@ var an = new Animal('lion', 3);
 var s = new Size(2);
 an = s;
 s = an;
+var e1 = {};
+var e2 = {};
+e1 = e2;
+var numberDatum = { data: 3 };
+var stringDatum = { data: 'tree' };
+// numberDatum = stringDatum // Since different types it gives errors
+// For different generic types (T, U, S, etc.) TS
+// makes those types as if they are any
+// let identity = function<T>(x: T): T {//Implementation}
+// let reverse = function<U>(y: U): U {//Implementation}
+// identity = reverse // Works since making U and T any
+// makes those two function compatible
