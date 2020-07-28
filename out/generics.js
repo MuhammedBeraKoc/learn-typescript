@@ -1,17 +1,4 @@
 "use strict";
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
 // Generics let's us to create
 // functions and classes that is reusable
 // Starting with a basic example
@@ -28,10 +15,10 @@ var __extends = (this && this.__extends) || (function () {
 function identity(arg) {
     return arg;
 }
-var genericString = identity('ShadowWalker12');
+const genericString = identity('ShadowWalker12');
 // TS is so smart that even if you dont give
 // the generic type it will get it
-var genericNumber = identity(12);
+const genericNumber = identity(12);
 // Using generics for Collection types is a little cautious
 // function printArrayLengthThenReturn<T>(t: T): T {
 //     console.log(t.length) // Oops!
@@ -45,25 +32,22 @@ function printArrayLengthThenReturn(t) {
 // Generic function type parameter
 // Look how we changed the generic type name
 // It is fine as long as we don't get messy with naming
-var myIdentity = identity;
+const myIdentity = identity;
 // Another way of return type declaration is using {}
 // Like in an interface (Call Signature)
-var anotherIdentity = identity;
+const anotherIdentity = identity;
 // See how it became more concise
-var coolIdentity = identity;
+const coolIdentity = identity;
 // Generic Classes
-var GenericNumber = /** @class */ (function () {
-    function GenericNumber() {
-    }
-    return GenericNumber;
-}());
-var myGenericNumber = new GenericNumber();
+class GenericNumber {
+}
+const myGenericNumber = new GenericNumber();
 myGenericNumber.zeroValue = 0;
-myGenericNumber.add = function (x, y) { return x + y; };
+myGenericNumber.add = (x, y) => x + y;
 // Let's use generic class for another type
-var stringNumeric = new GenericNumber();
+const stringNumeric = new GenericNumber();
 stringNumeric.zeroValue = '';
-stringNumeric.add = function (x, y) { return x + y; };
+stringNumeric.add = (x, y) => x + y;
 console.log(stringNumeric.add(stringNumeric.zeroValue, 'Hello!'));
 function loggingIdentity(arg) {
     console.log({ length: arg.length });
@@ -78,27 +62,21 @@ loggingIdentity({ length: 120 });
 function getProperty(obj, key) {
     return obj[key];
 }
-var newObject = { 'cloneable': true, 'id': '@52a3bs' };
+const newObject = { 'cloneable': true, 'id': '@52a3bs' };
 getProperty(newObject, 'cloneable');
 // getProperty(newObject, 'name') // Error
 // Class types in generic
 // Factory methods
-var Prototype = /** @class */ (function () {
-    function Prototype() {
+class Prototype {
+    constructor() {
         this.id = 'ab23f81s';
     }
-    return Prototype;
-}());
-var AugmentedPrototype = /** @class */ (function (_super) {
-    __extends(AugmentedPrototype, _super);
-    function AugmentedPrototype() {
-        return _super !== null && _super.apply(this, arguments) || this;
-    }
-    AugmentedPrototype.prototype.make = function () {
+}
+class AugmentedPrototype extends Prototype {
+    make() {
         console.log('Prototype is ready.');
-    };
-    return AugmentedPrototype;
-}(Prototype));
+    }
+}
 function create(c) {
     return new c();
 }

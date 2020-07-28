@@ -1,22 +1,21 @@
 "use strict";
-var Man = /** @class */ (function () {
-    function Man(name) {
+class Man {
+    constructor(name) {
         this.name = name;
     }
-    return Man;
-}());
+}
 // Named and Man are structurally compatible
-var man;
+let man;
 man = new Man('Adam');
 // Theory
 // Rule of thumb: x is compatible with y
 // If y has at least the same members as x
 // So y is a superset of x
-var X;
-var Y = { name: 'Angela', location: 'NY' };
+let X;
+const Y = { name: 'Angela', location: 'NY' };
 X = Y;
 function greet(n) {
-    console.log("Greetings, " + n.name + "!");
+    console.log(`Greetings, ${n.name}!`);
 }
 // It is OK since Y is a superset of Named (n)
 greet(Y);
@@ -25,18 +24,18 @@ greet(Y);
 // is an easy task, for functions it becomes very opposite
 // Functions with different paramater list (same body)
 // Name of paramaters is not considered
-var nullify = function (a) { return 0; };
-var nullifySecondDegree = function (b, c) { return 0; };
+let nullify = (a) => 0;
+let nullifySecondDegree = (b, c) => 0;
 nullifySecondDegree = nullify;
 // nullify = nullifySecondDegree // Error: cannot be assigned
 // You may ask why I should never used that
 // Simple answer: callback functions with optional parameters
 // Let's look an example for forEach function in array
-var items = ['Beer', 'Apple', 'Bow'];
+const items = ['Beer', 'Apple', 'Bow'];
 // Now you see that callback function of foreach accepts
 // Both format and this is quite popular
-items.forEach(function (item, index, array) { return console.log({ item: item }); });
-items.forEach(function (item) { return console.log({ item: item }); });
+items.forEach((item, index, array) => console.log({ item }));
+items.forEach(item => console.log({ item }));
 // For function return types it behaves same as object
 // const f = () => {x: 3}
 // const g = () => {x: 5, y: 10}
@@ -56,34 +55,32 @@ var Color;
     Color[Color["Blue"] = 1] = "Blue";
     Color[Color["Green"] = 2] = "Green";
 })(Color || (Color = {}));
-var currentStatus = Status.Ready;
+let currentStatus = Status.Ready;
 // currentStatus = Color.Red // Gives error
 // Class compatibility
 // Classes are nearly the same as objects in compatibility
 // Except it only looks instant members
 // Not constructors or static members
-var Animal = /** @class */ (function () {
-    function Animal(name, feet) {
+class Animal {
+    constructor(name, feet) {
         this.feet = feet;
         console.log(name);
     }
-    return Animal;
-}());
-var Size = /** @class */ (function () {
-    function Size(feet) {
+}
+class Size {
+    constructor(feet) {
         this.feet = feet;
     }
-    return Size;
-}());
-var an = new Animal('lion', 3);
-var s = new Size(2);
+}
+let an = new Animal('lion', 3);
+let s = new Size(2);
 an = s;
 s = an;
-var e1 = {};
-var e2 = {};
+let e1 = {};
+let e2 = {};
 e1 = e2;
-var numberDatum = { data: 3 };
-var stringDatum = { data: 'tree' };
+let numberDatum = { data: 3 };
+let stringDatum = { data: 'tree' };
 // numberDatum = stringDatum // Since different types it gives errors
 // For different generic types (T, U, S, etc.) TS
 // makes those types as if they are any

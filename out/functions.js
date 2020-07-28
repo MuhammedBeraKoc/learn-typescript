@@ -3,21 +3,16 @@
 function add(a, b) {
     return a + b;
 }
-var myAdd = function (a, b) { return a + b; };
+let myAdd = function (a, b) { return a + b; };
 // Optional (?) and default (=) parameters
-function f(o, s) {
-    if (s === void 0) { s = 'World'; }
+function f(o, s = 'World') {
     if (o) {
         console.log(o);
     }
-    console.log("Hello " + s + "!");
+    console.log(`Hello ${s}!`);
 }
 f({ name: '@f()' }, 'Adam');
-function execute(command) {
-    var args = [];
-    for (var _i = 1; _i < arguments.length; _i++) {
-        args[_i - 1] = arguments[_i];
-    }
+function execute(command, ...args) {
     console.log(command, args);
 }
 execute('ls', '-L', './');
@@ -37,11 +32,11 @@ execute('ls', '-L', './');
 // const self = this in the first line of m
 // and using self instead of this
 // Or we can bind m to the o like below
-var objEnhanced = {
+const objEnhanced = {
     value: 23,
-    m: function () {
-        var self = this;
-        var _f = function () {
+    m() {
+        const self = this;
+        const _f = function () {
             // Don't care even if this keyword
             // Gives warning
             // But using arrow functions are
@@ -49,22 +44,21 @@ var objEnhanced = {
             // console.log(this)
             // console.log(`Value: ${this.value}`)
             console.log(self);
-            console.log("Value: " + self.value);
+            console.log(`Value: ${self.value}`);
         };
         // return _f.bind(objEnhanced)
         return _f;
     }
 };
 objEnhanced.m()();
-var obj = {
+const obj = {
     value: Math.floor(Math.random() * 100),
     self: this,
     // This parameter can be assert to a specific type
-    m: function () {
-        var _this = this;
+    m() {
         console.log(this);
-        return function () {
-            console.log("Value is " + _this.value);
+        return () => {
+            console.log(`Value is ${this.value}`);
         };
     }
 };

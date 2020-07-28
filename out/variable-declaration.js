@@ -1,15 +1,4 @@
 "use strict";
-var __assign = (this && this.__assign) || function () {
-    __assign = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign.apply(this, arguments);
-};
 // Do NOT use var
 // USE let and const
 // If a value is likely to change later => let
@@ -26,30 +15,29 @@ function run() {
     console.log('Program started to run.');
 }
 // A neat example of block scope with let
-var isReady = true;
+const isReady = true;
 function configureSystem() {
-    var getOS = function () { return ''; };
+    let getOS = () => '';
     if (isReady) {
-        var OS_1 = 'Windows';
-        getOS = function () { return OS_1; };
+        const OS = 'Windows';
+        getOS = () => OS;
     }
     return getOS();
 }
 // Array destructuring
-var input = ['Hello', 'World!'];
-var inputFirst = input[0], inputSecond = input[1];
+const input = ['Hello', 'World!'];
+const [inputFirst, inputSecond] = input;
 // Object spread
 // You lose methods
-var A = /** @class */ (function () {
-    function A() {
+class A {
+    constructor() {
         this.a = 23;
     }
-    A.prototype.m = function () {
+    m() {
         console.log(this.a);
-    };
-    return A;
-}());
-var aObject = new A();
-var clonedA = __assign({}, aObject);
+    }
+}
+let aObject = new A();
+let clonedA = Object.assign({}, aObject);
 console.log(clonedA.a);
 // console.log(clonedA.m()) // Gives error

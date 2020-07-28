@@ -8,7 +8,7 @@ var KeyboardSignal;
     KeyboardSignal[KeyboardSignal["SPACE"] = 48] = "SPACE";
     KeyboardSignal[KeyboardSignal["UP"] = 53] = "UP";
 })(KeyboardSignal || (KeyboardSignal = {}));
-console.log("Keyboard signal: " + KeyboardSignal.TAB);
+console.log(`Keyboard signal: ${KeyboardSignal.TAB}`);
 // Using enums as parameters
 var Oven;
 (function (Oven) {
@@ -96,7 +96,7 @@ var LogLevel;
     LogLevel[LogLevel["DEBUG"] = 3] = "DEBUG";
 })(LogLevel || (LogLevel = {}));
 function printImportant(key, message) {
-    var num = LogLevel[key];
+    const num = LogLevel[key];
     if (num <= LogLevel.WARN) {
         console.log('Log level key is', key);
         console.log('Log level value is', num);
@@ -110,9 +110,9 @@ var Enum;
 (function (Enum) {
     Enum[Enum["A"] = 0] = "A";
 })(Enum || (Enum = {}));
-var a = Enum.A;
-var nameOfA = Enum[a];
-console.log({ nameOfA: nameOfA });
-var myAlert = 0 /* Mild */;
+let a = Enum.A;
+let nameOfA = Enum[a];
+console.log({ nameOfA });
+const myAlert = 0 /* Mild */;
 // Ambient enums
 // They used to describe the shape of a predifined enum
