@@ -41,7 +41,7 @@ console.log(colorArray.concat(numberArray))
 // I am so lazy to solve it via interface indexable types
 // So I asked in StackOverFlow
 // https://stackoverflow.com/questions/63144649/how-to-use-symbol-isconcatspreadable-in-ts
-numberArray[Symbol.isConcatSpreadable] = false
+numberArray[Symbol.isConcatSpreadable.toString()] = false
 console.log(colorArray.concat(numberArray))
 const primitiveObject = {
     [Symbol.toPrimitive](typeSignal: string): number | string | boolean {
