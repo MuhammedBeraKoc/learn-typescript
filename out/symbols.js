@@ -27,3 +27,32 @@ class SymbolOrientedClass {
 }
 console.log({ className: SymbolOrientedClass[getClassNameSymbol]() });
 // There are some cool built-in symbols that you can use
+class NativeArray {
+    static [Symbol.hasInstance](instance) {
+        return Array.isArray(instance) && instance;
+    }
+}
+console.log([] instanceof NativeArray);
+const colorArray = ['Blue', 'Red', 'Yellow'];
+const numberArray = ['1', '2', '3'];
+console.log(colorArray.concat(numberArray));
+// It gives an error because of the index type
+// I am so lazy to solve it via interface indexable types
+// So I asked in StackOverFlow
+// https://stackoverflow.com/questions/63144649/how-to-use-symbol-isconcatspreadable-in-ts
+numberArray[Symbol.isConcatSpreadable] = false;
+console.log(colorArray.concat(numberArray));
+const primitiveObject = {
+    [Symbol.toPrimitive](typeSignal) {
+        if (typeSignal === 'string') {
+            return '@PrimitiveObject';
+        }
+        else if (typeSignal === 'number') {
+            return Math.floor(Math.random() * 900000 + 100000);
+        }
+        return true;
+    }
+};
+console.log(+primitiveObject);
+console.log(`${primitiveObject}`);
+console.log(primitiveObject + '');
